@@ -6,7 +6,7 @@ export const StatsStrip: React.FC = () => {
     {
       value: GYM_DETAILS.metrics.members,
       label: 'Active Members',
-      sublabel: 'Ambejogai Fitness Community',
+      sublabel: 'Fitness Community · Location',
     },
     {
       value: GYM_DETAILS.metrics.coaches,

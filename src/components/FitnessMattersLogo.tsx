@@ -78,7 +78,7 @@ export const FitnessMattersLogo: React.FC<FitnessMattersLogoProps> = ({
           <span>MATTERS</span>
         </div>
         <span className="text-xs uppercase tracking-[0.25em] text-[#9ba1b0] mt-0.5">
-          Ambejogai · Est. 2018
+          Location · Est. 2018
         </span>
       </div>
     );
@@ -159,7 +159,7 @@ export const FitnessMattersLogo: React.FC<FitnessMattersLogoProps> = ({
         <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] tracking-[0.22em] uppercase text-[#9ba1b0] font-sans font-semibold mt-0.5">
           <span className="text-[#e52538] font-bold">GYM</span>
           <span>·</span>
-          <span>AMBEJOGAI</span>
+          <span>LOCATION</span>
         </div>
       </div>
     </div>

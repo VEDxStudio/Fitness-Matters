@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Award, CheckCircle, ArrowUpRight, ShieldCheck, Dumbbell } from 'lucide-react';
 import { CoachingVisual } from './GymGraphics';
+import { GymImage } from './GymImage';
+import { GYM_PHOTOS } from '../data/gymImages';
 import { COACHES_DATA } from '../data/gymData';
 
 interface TeamProps {
@@ -10,6 +12,12 @@ interface TeamProps {
 export const Team: React.FC<TeamProps> = ({ onBookSession }) => {
   const [selectedCoachIndex, setSelectedCoachIndex] = useState(0);
   const activeCoach = COACHES_DATA[selectedCoachIndex];
+
+  const getCoachPhoto = (id: string) => {
+    if (id === 'coach-1') return GYM_PHOTOS.coaches.rohit;
+    if (id === 'coach-2') return GYM_PHOTOS.coaches.snehal;
+    return GYM_PHOTOS.coaches.ajay;
+  };
 
   return (
     <section id="team" className="py-20 lg:py-28 bg-[#121418] relative border-t border-white/10">
@@ -55,7 +63,7 @@ export const Team: React.FC<TeamProps> = ({ onBookSession }) => {
                   1,200+
                 </div>
                 <div className="text-[10px] font-heading uppercase tracking-wider text-[#9ba1b0] font-semibold mt-1">
-                  Ambejogai Lifters
+                  Dedicated Lifters
                 </div>
               </div>
             </div>
@@ -65,7 +73,7 @@ export const Team: React.FC<TeamProps> = ({ onBookSession }) => {
               <button
                 type="button"
                 onClick={() => onBookSession(activeCoach.name)}
-                className="btn-primary text-sm shadow-glow-sm flex items-center gap-2"
+                className="btn-primary text-sm shadow-glow-sm flex items-center gap-2 cursor-pointer"
               >
                 <span>Book a Free Session with {activeCoach.name.split(' ')[0]}</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -73,15 +81,34 @@ export const Team: React.FC<TeamProps> = ({ onBookSession }) => {
             </div>
           </div>
 
-          {/* Right Column: 1024x768 Team / Specialist Visual */}
+          {/* Right Column: 1024x768 Team / Specialist Visual with real photography */}
           <div className="lg:col-span-6">
             <div className="relative rounded-sm overflow-hidden aspect-[4/3] shadow-[0_0_35px_rgba(229,37,56,0.18)] border border-white/10 group">
-              <CoachingVisual className="group-hover:scale-105 transition-transform duration-700 ease-out" />
+              <GymImage
+                src={GYM_PHOTOS.personalTrainingCoach.url}
+                alt={GYM_PHOTOS.personalTrainingCoach.alt}
+                fallbackComponent={<CoachingVisual className="group-hover:scale-105 transition-transform duration-700 ease-out" />}
+                className="group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
 
-              <div className="absolute top-3 left-3 bg-[#0b0c0e]/90 backdrop-blur-sm border border-[#e52538]/50 px-3 py-1.5 rounded-sm flex items-center gap-2">
+              <div className="absolute top-3 left-3 bg-[#0b0c0e]/90 backdrop-blur-sm border border-[#e52538]/50 px-3 py-1.5 rounded-sm flex items-center gap-2 z-10">
                 <ShieldCheck className="w-4 h-4 text-[#e52538]" />
                 <span className="font-heading text-xs uppercase tracking-wider text-white font-bold">
                   Active Floor Mentorship
+                </span>
+              </div>
+
+              <div className="absolute bottom-3 left-3 right-3 bg-[#0b0c0e]/85 backdrop-blur-sm border border-white/10 p-3 rounded-sm flex items-center justify-between text-xs z-10">
+                <div>
+                  <span className="font-heading font-bold uppercase text-white tracking-wide block">
+                    1-on-1 Form & Biomechanics Review
+                  </span>
+                  <span className="text-[11px] text-[#9ba1b0]">
+                    Personalized progressive overload calibration
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-[#e52538] uppercase">
+                  ACTIVE FLOOR
                 </span>
               </div>
             </div>
@@ -92,6 +119,7 @@ export const Team: React.FC<TeamProps> = ({ onBookSession }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
           {COACHES_DATA.map((coach, idx) => {
             const isSelected = selectedCoachIndex === idx;
+            const photoUrl = getCoachPhoto(coach.id);
 
             return (
               <div
@@ -105,9 +133,19 @@ export const Team: React.FC<TeamProps> = ({ onBookSession }) => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-sm bg-[#121418] border border-[#e52538] flex items-center justify-center font-display text-xl font-black text-white">
-                      {coach.name.split(' ').map((n) => n[0]).join('')}
+                    {/* Coach Photo Avatar */}
+                    <div className="relative w-14 h-14 rounded-sm overflow-hidden border-2 border-[#e52538] bg-[#121418] shadow-glow-sm shrink-0">
+                      <GymImage
+                        src={photoUrl}
+                        alt={coach.name}
+                        fallbackComponent={
+                          <div className="w-full h-full flex items-center justify-center font-display text-xl font-black text-white bg-[#121418]">
+                            {coach.name.split(' ').map((n) => n[0]).join('')}
+                          </div>
+                        }
+                      />
                     </div>
+
                     <span className="text-[10px] font-mono uppercase bg-white/5 border border-white/10 px-2 py-0.5 rounded-sm text-[#e52538]">
                       {coach.experience} Exp
                     </span>
@@ -145,7 +183,7 @@ export const Team: React.FC<TeamProps> = ({ onBookSession }) => {
                       e.stopPropagation();
                       onBookSession(coach.name);
                     }}
-                    className="text-xs font-heading uppercase tracking-wider font-bold text-[#e52538] hover:text-white flex items-center gap-1"
+                    className="text-xs font-heading uppercase tracking-wider font-bold text-[#e52538] hover:text-white flex items-center gap-1 cursor-pointer"
                   >
                     <span>Consult</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />

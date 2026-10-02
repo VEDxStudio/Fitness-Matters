@@ -42,6 +42,7 @@ export interface GalleryItem {
   category: string;
   aspect: '16:9' | '1:1';
   image: string;
+  photoUrl?: string;
   caption: string;
 }
 

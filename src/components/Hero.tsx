@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Eyebrow */}
             <div className="mb-4">
               <span className="eyebrow text-xs sm:text-sm font-semibold tracking-[0.2em]">
-                AMBEJOGAI’S PREMIER STRENGTH DESTINATION
+                PREMIER STRENGTH DESTINATION · LOCATION
               </span>
             </div>
 
@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Supporting description */}
             <p className="max-w-2xl text-base sm:text-lg text-[#9ba1b0] leading-relaxed mb-8 font-sans">
               Train harder. Get stronger. Shatter your limits at <strong className="text-white font-semibold">{GYM_DETAILS.name}</strong>. 
-              Ambejogai's premier 5,000 sq. ft. training ground featuring calibrated heavy iron, 
+              A premier 5,000 sq. ft. training ground featuring calibrated heavy iron, 
               certified coaches, high-octane conditioning turf, and an authentic brotherhood of discipline.
             </p>
 
@@ -92,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
               <div className="text-xs sm:text-sm text-[#9ba1b0]">
                 <strong className="text-white font-semibold">JOIN 500+ ATHLETES</strong>
-                <span className="block text-xs text-[#9ba1b0]/80">Transforming daily in Ambejogai</span>
+                <span className="block text-xs text-[#9ba1b0]/80">Transforming daily at our location</span>
               </div>
             </div>
 
@@ -120,7 +120,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <div className="flex items-center gap-2">
                   <div className="w-2.5 h-2.5 bg-[#e52538] rounded-full animate-pulse" />
                   <span className="text-xs uppercase tracking-widest font-heading font-bold text-white">
-                    AMBEJOGAI HEADQUARTERS
+                    GYM HEADQUARTERS · LOCATION
                   </span>
                 </div>
                 <span className="text-[11px] font-mono text-[#e52538]">EST. 2018</span>

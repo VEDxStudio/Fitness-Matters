@@ -108,7 +108,7 @@ export const HeroGymVisual: React.FC<{ className?: string }> = ({ className = ''
           fill="#ffffff"
           opacity="0.6"
         >
-          DISCIPLINE · AMBEJOGAI
+          DISCIPLINE · LOCATION
         </text>
       </g>
 
@@ -284,7 +284,7 @@ export const FacilityVisual: React.FC<{ className?: string }> = ({ className = '
       <span className="font-heading font-bold uppercase tracking-wider text-[#e52538]">
         Olympic Training Deck
       </span>
-      <span className="font-mono text-white/60">5,000 SQ FT · AMBEJOGAI</span>
+      <span className="font-mono text-white/60">5,000 SQ FT · LOCATION</span>
     </div>
   </div>
 );

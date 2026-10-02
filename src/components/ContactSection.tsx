@@ -149,7 +149,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   const handleWhatsAppDirect = () => {
     const text = encodeURIComponent(
-      `Hi Fitness Matters Gym Ambejogai! I'm interested in joining the gym for the ${selectedPlanDetails.name} (${selectedPlanDetails.price}). Please share trial details!`
+      `Hi Fitness Matters Gym! I'm interested in joining the gym for the ${selectedPlanDetails.name} (${selectedPlanDetails.price}). Please share trial details!`
     );
     window.open(`https://wa.me/${GYM_DETAILS.contacts.whatsapp}?text=${text}`, '_blank');
   };
@@ -168,7 +168,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
             <p className="text-sm sm:text-base text-[#9ba1b0] leading-relaxed mb-8 font-sans">
               Have questions regarding membership rates, coaching, or equipment? Reach out directly or drop by 
-              our facility in Ambejogai. Our team will tour you through the floor and test your initial baseline strength.
+              our facility at our location. Our team will tour you through the floor and test your initial baseline strength.
             </p>
 
             {/* Business Contact Cards with Primary Brand Icons */}
@@ -186,7 +186,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     {GYM_DETAILS.address.full}
                   </p>
                   <span className="text-[10px] font-mono text-[#e52538] mt-1 inline-block">
-                    Landmark: Near Yogeshwari Complex / Shivaji Chowk
+                    Landmark: Central Accessibility & Parking
                   </span>
                 </div>
               </div>
@@ -268,7 +268,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </h3>
                 </div>
                 <span className="text-[10px] font-mono uppercase text-[#e52538] font-bold">
-                  AMBEJOGAI GYM
+                  LOCATION
                 </span>
               </div>
 
@@ -287,7 +287,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </h4>
                   <p className="text-xs sm:text-sm text-[#9ba1b0] max-w-md mx-auto mb-6">
                     Thank you, <strong className="text-white">{submittedReceipt.fullName}</strong>. Your membership request 
-                    has been recorded in our Ambejogai front-desk queue. Coach Rohit or our desk team will call you within 2 hours.
+                    has been recorded in our front-desk queue. Coach Rohit or our desk team will call you within 2 hours.
                   </p>
 
                   {/* Summary Breakdown */}

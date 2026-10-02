@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#9ba1b0] pb-10 mb-8 border-b border-white/10 w-full max-w-3xl">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-[#e52538]" />
-              <span>Parli Road, Shivaji Chowk, Ambejogai</span>
+              <span>Main Training Facility · Location</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5 text-[#e52538]" />
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="mt-4 sm:mt-0 flex items-center gap-4">
-              <span className="font-mono text-[11px] text-white/40">Ambejogai · Maharashtra · 431517</span>
+              <span className="font-mono text-[11px] text-white/40">Location · Gym & Fitness Club</span>
               <button
                 type="button"
                 onClick={scrollToTop}

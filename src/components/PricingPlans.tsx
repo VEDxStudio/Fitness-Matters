@@ -137,7 +137,7 @@ export const PricingPlans: React.FC<PricingPlansProps> = ({ onSelectPlan }) => {
                 College Student & Annual Couple Concessions Available
               </h4>
               <p className="text-xs text-[#9ba1b0]">
-                Special group rates for college students in Ambejogai and couple yearly transformation packages upon ID verification.
+                Special group rates for students and couple yearly transformation packages upon ID verification.
               </p>
             </div>
           </div>

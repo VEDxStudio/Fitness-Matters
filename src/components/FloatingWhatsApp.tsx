@@ -5,7 +5,7 @@ import { GYM_DETAILS } from '../data/gymData';
 export const FloatingWhatsApp: React.FC = () => {
   const handleClick = () => {
     const text = encodeURIComponent(
-      `Hello Fitness Matters Gym Ambejogai! I'm interested in gym membership & batch timings. Please share details.`
+      `Hello Fitness Matters Gym! I'm interested in gym membership & batch timings. Please share details.`
     );
     window.open(`https://wa.me/${GYM_DETAILS.contacts.whatsapp}?text=${text}`, '_blank');
   };

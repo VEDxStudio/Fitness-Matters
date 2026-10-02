@@ -1,6 +1,7 @@
-import React from 'react';
-import { X, Play, Dumbbell, Flame, Volume2, ShieldCheck } from 'lucide-react';
-import { GYM_DETAILS } from '../data/gymData';
+import React, { useState } from 'react';
+import { X, Play, Dumbbell, Flame, Volume2, ShieldCheck, ArrowRight, Eye } from 'lucide-react';
+import { GymImage } from './GymImage';
+import { GYM_PHOTOS } from '../data/gymImages';
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -9,7 +10,38 @@ interface VideoModalProps {
 }
 
 export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, onStartTraining }) => {
+  const [activeSlide, setActiveSlide] = useState<number>(0);
+
   if (!isOpen) return null;
+
+  const slides = [
+    {
+      title: 'Discipline Today · Strength Tomorrow',
+      tag: 'MAIN TRAINING FLOOR',
+      subtitle: '5,000 sq. ft. precision training floor with dumbbell bays, selectorized machines, and dark mood lighting.',
+      photo: GYM_PHOTOS.facilityInterior,
+    },
+    {
+      title: 'High-Velocity Battle Ropes Arena',
+      tag: 'METABOLIC CONDITIONING',
+      subtitle: 'Explosive core conditioning, dual 50-ft heavy battle ropes, and power cage training.',
+      photo: GYM_PHOTOS.battleRopesAthlete,
+    },
+    {
+      title: 'Olympic Heavy Iron & Power Racks',
+      tag: 'FREE WEIGHTS & BARBELLS',
+      subtitle: 'Competition-grade Olympic bars, calibrated bumper plates, and deadlift platforms.',
+      photo: GYM_PHOTOS.heavyStrengthBarbell,
+    },
+    {
+      title: 'Calibrated Dumbbell Deck (2.5KG – 50KG)',
+      tag: 'DUMBBELL BAY',
+      subtitle: 'Precision knurled urethane dumbbells on three tiered shock-absorbing rubber bays.',
+      photo: GYM_PHOTOS.dumbbellBay,
+    },
+  ];
+
+  const current = slides[activeSlide];
 
   return (
     <div
@@ -17,7 +49,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, onStart
       onClick={onClose}
     >
       <div
-        className="relative max-w-3xl w-full bg-[#121418] border border-white/20 rounded-sm overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200"
+        className="relative max-w-4xl w-full bg-[#121418] border border-white/20 rounded-sm overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -25,68 +57,75 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, onStart
           <div className="flex items-center gap-2.5">
             <div className="w-2.5 h-2.5 bg-[#e52538] rounded-full animate-pulse" />
             <h3 className="font-heading uppercase text-sm sm:text-base font-bold text-white tracking-wider">
-              Fitness Matters Gym Floor Experience · Ambejogai
+              Fitness Matters Gym Floor Experience · Virtual Tour
             </h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-white/60 hover:text-white rounded-sm hover:bg-white/10 transition-colors"
+            className="p-1.5 text-white/60 hover:text-white rounded-sm hover:bg-white/10 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Video Canvas Simulation */}
-        <div className="relative aspect-video bg-[#08090b] flex flex-col items-center justify-center overflow-hidden p-6 text-center">
-          {/* Animated Atmospheric Lighting */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(229,37,56,0.3)_0%,transparent_70%)]" />
+        {/* Main Photo Visual Stage */}
+        <div className="relative aspect-[16/9] bg-[#08090b] overflow-hidden">
+          <GymImage
+            src={current.photo.url}
+            alt={current.photo.alt}
+            className="w-full h-full object-cover"
+          />
 
-          {/* Barbell & Chalk Dust Visual */}
-          <div className="relative z-10 max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-full bg-[#e52538] text-white flex items-center justify-center mx-auto mb-4 shadow-glow">
-              <Play className="w-8 h-8 fill-current ml-1" />
-            </div>
+          {/* Top Tag */}
+          <div className="absolute top-4 left-4 bg-[#0b0c0e]/85 backdrop-blur-sm border border-white/15 px-3 py-1 rounded-sm text-[11px] font-heading uppercase tracking-widest text-[#e52538] font-bold z-10">
+            {current.tag}
+          </div>
 
-            <div className="font-display uppercase text-3xl sm:text-4xl font-black text-white tracking-wide mb-2">
-              DISCIPLINE IN MOTION
-            </div>
-
-            <p className="text-xs sm:text-sm text-[#9ba1b0] mb-6">
-              "When you step inside Fitness Matters Ambejogai, excuses stay outside. 5,000 square feet of heavy steel, calibrated bumper plates, and a relentless training brotherhood."
+          {/* Caption Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c0e] via-black/30 to-transparent flex flex-col justify-end p-6 z-10">
+            <h4 className="font-display uppercase text-2xl sm:text-4xl font-black text-white tracking-wide mb-1">
+              {current.title}
+            </h4>
+            <p className="text-xs sm:text-sm text-[#9ba1b0] max-w-2xl font-sans">
+              {current.subtitle}
             </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-white/80 font-heading uppercase tracking-wider">
-              <span className="flex items-center gap-1.5 bg-[#181b22] px-3 py-1 border border-white/10 rounded-sm">
-                <Dumbbell className="w-3.5 h-3.5 text-[#e52538]" />
-                <span>Heavy Iron Deck</span>
-              </span>
-              <span className="flex items-center gap-1.5 bg-[#181b22] px-3 py-1 border border-white/10 rounded-sm">
-                <Flame className="w-3.5 h-3.5 text-[#e52538]" />
-                <span>Metabolic Turf</span>
-              </span>
-              <span className="flex items-center gap-1.5 bg-[#181b22] px-3 py-1 border border-white/10 rounded-sm">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#e52538]" />
-                <span>Certified Coaches</span>
-              </span>
-            </div>
           </div>
+        </div>
 
-          <div className="absolute bottom-3 left-4 text-[10px] font-mono text-white/50">
-            CINEMATIC PREVIEW · FITNESS MATTERS AMBEJOGAI
-          </div>
+        {/* Thumbnail Selector Bar */}
+        <div className="p-3 bg-[#0f1115] border-t border-white/10 grid grid-cols-4 gap-2">
+          {slides.map((slide, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setActiveSlide(idx)}
+              className={`p-2 rounded-sm text-left transition-all cursor-pointer border ${
+                activeSlide === idx
+                  ? 'bg-[#1a1d24] border-[#e52538] shadow-glow-sm'
+                  : 'bg-[#14161c] border-white/5 hover:border-white/20 opacity-70 hover:opacity-100'
+              }`}
+            >
+              <div className="text-[10px] font-mono text-[#e52538] uppercase font-bold">
+                VIEW 0{idx + 1}
+              </div>
+              <div className="text-xs font-heading uppercase tracking-wider font-bold text-white truncate">
+                {slide.tag}
+              </div>
+            </button>
+          ))}
         </div>
 
         {/* Modal Footer */}
         <div className="p-4 bg-[#0b0c0e] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-xs text-[#9ba1b0]">
-            Ready to experience the floor in person?
+            Experience the floor in person. Book your free baseline assessment session.
           </span>
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="btn-ghost text-xs py-2 px-4"
+              className="btn-ghost text-xs py-2 px-4 cursor-pointer"
             >
               Close
             </button>
@@ -96,7 +135,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, onStart
                 onClose();
                 onStartTraining();
               }}
-              className="btn-primary text-xs py-2 px-5"
+              className="btn-primary text-xs py-2 px-5 cursor-pointer shadow-glow-sm"
             >
               Start Training Now
             </button>

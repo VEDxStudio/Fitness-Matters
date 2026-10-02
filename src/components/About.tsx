@@ -1,6 +1,8 @@
 import React from 'react';
-import { Check, ShieldCheck, MapPin, Award } from 'lucide-react';
+import { Check, ShieldCheck, MapPin, Award, Eye } from 'lucide-react';
 import { FacilityVisual } from './GymGraphics';
+import { GymImage } from './GymImage';
+import { GYM_PHOTOS } from '../data/gymImages';
 import { GYM_DETAILS } from '../data/gymData';
 
 interface AboutProps {
@@ -15,24 +17,35 @@ export const About: React.FC<AboutProps> = ({ onLearnMore }) => {
           {/* Left Column: 1024x768 Facility Visual with subtle corner glow */}
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-sm overflow-hidden aspect-[4/3] shadow-[0_0_35px_rgba(229,37,56,0.18)] border border-white/10 group">
-              <FacilityVisual className="group-hover:scale-105 transition-transform duration-700 ease-out" />
+              {/* High-Resolution Modern Gym Floor Photo matching user's reference */}
+              <GymImage
+                src={GYM_PHOTOS.facilityInterior.url}
+                alt={GYM_PHOTOS.facilityInterior.alt}
+                fallbackComponent={<FacilityVisual className="group-hover:scale-105 transition-transform duration-700 ease-out" />}
+                className="group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
 
               {/* Accent Corner Badges */}
-              <div className="absolute top-3 left-3 bg-[#0b0c0e]/90 backdrop-blur-sm border border-[#e52538]/50 px-3 py-1.5 rounded-sm flex items-center gap-2">
+              <div className="absolute top-3 left-3 bg-[#0b0c0e]/90 backdrop-blur-sm border border-[#e52538]/50 px-3 py-1.5 rounded-sm flex items-center gap-2 z-10">
                 <ShieldCheck className="w-4 h-4 text-[#e52538]" />
                 <span className="font-heading text-xs uppercase tracking-wider text-white font-bold">
-                  Verified Local Gym
+                  Verified Training Floor
                 </span>
               </div>
 
-              <div className="absolute bottom-3 right-3 bg-[#0b0c0e]/90 backdrop-blur-sm border border-white/15 px-3 py-1 rounded-sm flex items-center gap-1.5 text-xs text-[#9ba1b0]">
+              {/* Wall Motto Watermark Badge directly referencing the user's uploaded photo */}
+              <div className="absolute top-3 right-3 bg-[#0b0c0e]/85 backdrop-blur-sm border border-white/15 px-2.5 py-1 rounded-sm text-[10px] font-heading uppercase tracking-widest text-[#e52538] font-bold z-10">
+                DISCIPLINE TODAY · STRENGTH TOMORROW
+              </div>
+
+              <div className="absolute bottom-3 right-3 bg-[#0b0c0e]/90 backdrop-blur-sm border border-white/15 px-3 py-1 rounded-sm flex items-center gap-1.5 text-xs text-[#9ba1b0] z-10">
                 <MapPin className="w-3.5 h-3.5 text-[#e52538]" />
-                <span>Ambejogai, Maharashtra</span>
+                <span>5,000 Sq. Ft. Facility</span>
               </div>
             </div>
 
             {/* Floating Experience Box */}
-            <div className="hidden sm:flex absolute -bottom-6 -left-6 bg-[#121418] border-2 border-[#e52538] p-4 rounded-sm shadow-2xl items-center gap-3">
+            <div className="hidden sm:flex absolute -bottom-6 -left-6 bg-[#121418] border-2 border-[#e52538] p-4 rounded-sm shadow-2xl items-center gap-3 z-20">
               <div className="w-12 h-12 bg-[#e52538] flex items-center justify-center rounded-sm text-white">
                 <Award className="w-6 h-6" />
               </div>
@@ -41,7 +54,7 @@ export const About: React.FC<AboutProps> = ({ onLearnMore }) => {
                   8+ YEARS
                 </div>
                 <div className="text-[11px] font-heading uppercase tracking-wider text-[#9ba1b0] font-semibold">
-                  Forging Strength in Ambejogai
+                  Forging Strength at Our Location
                 </div>
               </div>
             </div>
@@ -65,7 +78,7 @@ export const About: React.FC<AboutProps> = ({ onLearnMore }) => {
               <p>
                 Founded on the unshakeable belief that physical discipline builds mental fortitude, 
                 <strong className="text-white font-semibold"> {GYM_DETAILS.name}</strong> has grown from an authentic 
-                local strength club into Ambejogai’s most respected training environment. We reject quick-fix fads in favor 
+                local strength club into a premier, respected training environment. We reject quick-fix fads in favor 
                 of calibrated progressive overload, proper biomechanics, and consistent daily sweat.
               </p>
               <p>
