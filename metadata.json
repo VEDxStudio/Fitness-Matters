@@ -1,0 +1,6 @@
+{
+  "name": "Fitness Matters Gym - Ambejogai",
+  "description": "Ambejogai's premier strength and fitness destination. Calibrated heavy iron, certified coaches, modern equipment, and real transformations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,295 @@
+import { MembershipPlan, Coach, FacilityZone, GalleryItem, ScheduleItem } from '../types';
+
+export const MEMBERSHIP_PLANS: MembershipPlan[] = [
+  {
+    id: 'monthly',
+    name: 'Monthly Pass',
+    price: '₹1,500',
+    originalPrice: '₹1,800',
+    period: '/ month',
+    billingText: 'Billed monthly · No long-term lock-in',
+    description: 'Perfect for beginners starting their journey or travelers testing out Ambejogai’s best training floor.',
+    perks: [
+      'Full access to all 5,000 sq. ft. training zones',
+      'Free weights, Olympic barbells & machine decks',
+      'Initial baseline fitness & body composition assessment',
+      'General trainer floor guidance & form supervision',
+      'Locker room & clean shower facilities access',
+      'Flexible month-to-month renewal',
+    ],
+  },
+  {
+    id: 'quarterly',
+    name: 'Quarterly Builder',
+    price: '₹4,000',
+    originalPrice: '₹4,500',
+    period: '/ 3 months',
+    billingText: 'Equivalent to ₹1,333/month · Save ₹500',
+    featured: true,
+    badge: 'MOST POPULAR',
+    savings: 'SAVE 12%',
+    description: 'The golden standard for noticeable muscular hypertrophy, fat loss, and lasting strength habits.',
+    perks: [
+      'Everything in Monthly Pass included',
+      'Customized monthly diet & nutrition chart (Veg / Non-veg)',
+      '1 complimentary 1-on-1 Personal Training form session',
+      'Bi-weekly body fat & muscle circumference checkups',
+      'Full access to Cross-Training & Conditioning turf',
+      'Priority access to morning & evening peak slots',
+    ],
+  },
+  {
+    id: 'yearly',
+    name: 'Yearly Dominance',
+    price: '₹12,000',
+    originalPrice: '₹18,000',
+    period: '/ year',
+    billingText: 'Equivalent to ₹1,000/month · Best value in Ambejogai',
+    savings: 'SAVE 33%',
+    badge: 'MAXIMUM VALUE',
+    description: 'For dedicated athletes committed to a lifetime of discipline, raw power, and elite physical conditioning.',
+    perks: [
+      'Everything in Quarterly Builder included',
+      'Dedicated personal locker allocation for 12 months',
+      '4 complimentary 1-on-1 Personal Training sessions',
+      'Quarterly customized supplement & macro nutrition blueprint',
+      '1-month freeze privilege for travel / exams',
+      'Official Fitness Matters dry-fit training tee & shaker',
+      'Family guest passes (2 passes per quarter)',
+    ],
+  },
+];
+
+export const COACHES_DATA: Coach[] = [
+  {
+    id: 'coach-1',
+    name: 'Rohit Kaldate',
+    role: 'Founder & Head Strength Coach',
+    certifications: ['Certified K11 Strength Specialist', 'ACE Certified Personal Trainer', 'CPR/AED Certified'],
+    experience: '8+ Years',
+    specialty: 'Powerlifting, Hypertrophy & Olympic Barbell Technique',
+    bio: 'Pioneer of science-based heavy resistance training in Ambejogai. Dedicated to helping men and women shatter their mental plateaus with calibrated progressive overload.',
+    image: 'coach_rohit',
+    stats: [
+      { label: 'Athletes Coached', value: '450+' },
+      { label: 'Certifications', value: '3 International' },
+      { label: 'Max Deadlift', value: '260 KG' },
+    ],
+  },
+  {
+    id: 'coach-2',
+    name: 'Snehal Jadhav',
+    role: 'Senior Functional & Conditioning Coach',
+    certifications: ['ACSM Certified Fitness Instructor', 'Rehab & Mobility Specialist', 'Sports Nutritionist'],
+    experience: '6+ Years',
+    specialty: 'Fat Loss, Core Endurance & Women’s Strength Protocol',
+    bio: 'Specializes in high-intensity metabolic conditioning, postpartum fitness, and posture correction. Leads our signature evening functional bootcamps.',
+    image: 'coach_snehal',
+    stats: [
+      { label: 'Transformations', value: '280+' },
+      { label: 'Client Retention', value: '96%' },
+      { label: 'Daily Energy', value: '100%' },
+    ],
+  },
+  {
+    id: 'coach-3',
+    name: 'Ajay Shinde',
+    role: 'Bodybuilding & Physique Specialist',
+    certifications: ['Gold’s Gym Fitness Institute (GGFI)', 'Biomechanics & Hypertrophy Masterclass'],
+    experience: '7+ Years',
+    specialty: 'Contest Prep, Hypertrophy & Strict Form Correction',
+    bio: 'Former Maharashtra state physique competitor who brings laser precision to muscle mind-muscle connection and progressive resistance programming.',
+    image: 'coach_ajay',
+    stats: [
+      { label: 'Podium Finishes', value: '4' },
+      { label: 'Active Mentees', value: '80+' },
+      { label: 'Dedication', value: '10/10' },
+    ],
+  },
+];
+
+export const FACILITY_ZONES: FacilityZone[] = [
+  {
+    id: 'strength',
+    title: 'STRENGTH & HEAVY IRON',
+    kicker: 'TRAINING',
+    description: 'Build dense muscle, lift heavy, and shatter personal records with calibrated Olympic bars and heavy-gauge power racks.',
+    tag: 'STRENGTH',
+    iconName: 'dumbbell',
+    specs: ['Commercial Squat Cages', 'Olympic 20kg Barbells', 'Bumper Plates up to 300kg', 'Deadlift Platforms'],
+    image: 'strength',
+  },
+  {
+    id: 'conditioning',
+    title: 'CONDITIONING & TURF',
+    kicker: 'METABOLIC',
+    description: 'Increase VO2 max, explosive stamina, and work capacity. High-octane metabolic circuits engineered for serious results.',
+    tag: 'CONDITIONING',
+    iconName: 'flame',
+    specs: ['50-foot Battle Ropes', 'Plyometric Soft Boxes', 'Concept2 Rower & SkiErg', 'Heavy Sleds & Turf'],
+    image: 'conditioning',
+  },
+  {
+    id: 'personal',
+    title: '1-ON-1 PERSONAL COACHING',
+    kicker: 'MENTORSHIP',
+    description: 'Laser-focused 1-on-1 guidance tailored to your body genetics, injury history, and specific strength/physique goals.',
+    tag: 'PERSONAL TRAINING',
+    iconName: 'user',
+    specs: ['Bi-weekly Composition Scans', 'Custom Macro Nutrition', 'Biomechanics Video Review', '100% Focused Attention'],
+    image: 'personal',
+  },
+  {
+    id: 'cardio',
+    title: 'CARDIO DECK & ENDURANCE',
+    kicker: 'CARDIO',
+    description: 'State-of-the-art shock-absorbing commercial treadmills, cross trainers, and spin bikes with live heart rate monitoring.',
+    tag: 'CARDIO ZONE',
+    iconName: 'heart',
+    specs: ['Touchscreen Treadmills', 'Spinning Bikes', 'Stair Climbers', 'Zone-2 Heart Rate Tracking'],
+    image: 'cardio',
+  },
+];
+
+export const SCHEDULE_DATA: ScheduleItem[] = [
+  {
+    batchName: 'Morning Early Bird Batch',
+    timeRange: '5:30 AM – 8:00 AM',
+    focus: 'Heavy Strength, Powerlifting & Fasted Conditioning',
+    days: 'Monday – Saturday',
+    badge: 'HIGHEST ENERGY',
+  },
+  {
+    batchName: 'Morning Standard Batch',
+    timeRange: '8:00 AM – 10:30 AM',
+    focus: 'Hypertrophy, Machine Circuit & General Fitness',
+    days: 'Monday – Saturday',
+  },
+  {
+    batchName: 'Exclusive Ladies Batch',
+    timeRange: '11:00 AM – 1:00 PM',
+    focus: 'Strength, Mobility, Aerobics & Dedicated Female Coach',
+    days: 'Monday – Saturday',
+    badge: 'WOMEN ONLY',
+  },
+  {
+    batchName: 'Evening Rush Batch',
+    timeRange: '4:30 PM – 7:30 PM',
+    focus: 'Full Floor Access, Free Weights & Cross-Training',
+    days: 'Monday – Saturday',
+    badge: 'POPULAR',
+  },
+  {
+    batchName: 'Night Owls Prime Batch',
+    timeRange: '7:30 PM – 10:00 PM',
+    focus: 'Bodybuilding, Heavy Isolation & HIIT Sprints',
+    days: 'Monday – Saturday',
+  },
+  {
+    batchName: 'Sunday Open Mat & Recovery',
+    timeRange: '6:00 AM – 12:00 PM',
+    focus: 'Active Mobility, Core Drills & Free Form Training',
+    days: 'Sunday Only',
+    badge: 'RECOVERY',
+  },
+];
+
+export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: 'gal-1',
+    title: 'Authentic Neon Sign & Brand Mascot',
+    zone: 'Entrance & Welcoming Floor',
+    category: 'BRAND IDENTITY',
+    aspect: '16:9',
+    image: 'signboard',
+    caption: 'The iconic "FITNESS MATTERS" illuminated acrylic signboard featuring our muscular mascot and traditional blessings.',
+  },
+  {
+    id: 'gal-2',
+    title: 'Olympic Free Weight & Barbell Bay',
+    zone: 'Strength Arena',
+    category: 'EQUIPMENT',
+    aspect: '1:1',
+    image: 'power_racks',
+    caption: 'Heavy-gauge power cages, deadlift platforms, and competition-spec calibrated Olympic plates.',
+  },
+  {
+    id: 'gal-3',
+    title: 'Dumbbell Bay: 2.5 KG to 50 KG',
+    zone: 'Free Weights Deck',
+    category: 'FLOOR',
+    aspect: '1:1',
+    image: 'dumbbell_row',
+    caption: 'Pairs of precision urethane dumbbells arranged in three clean tiers with non-slip industrial rubber flooring.',
+  },
+  {
+    id: 'gal-4',
+    title: 'Functional Conditioning & Cardio Arena',
+    zone: 'Endurance Zone',
+    category: 'CARDIO & TURF',
+    aspect: '16:9',
+    image: 'conditioning_floor',
+    caption: 'Spacious conditioning zone equipped with battle ropes, plyo boxes, air bikes, and sled tracks.',
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    id: 'test-1',
+    name: 'Omkar Deshmukh',
+    role: 'Member since 2022',
+    achievement: 'Lost 18 KG & Built 6 KG Muscle',
+    quote:
+      'Fitness Matters completely changed the fitness culture in Ambejogai. The trainers actually walk the floor, check your deadlift spine curvature, and keep you disciplined every single morning.',
+    rating: 5,
+  },
+  {
+    id: 'test-2',
+    name: 'Pooja Kulkarni',
+    role: 'Member since 2023',
+    achievement: 'Gained Core Strength & Posture Fix',
+    quote:
+      'The special ladies batch with Coach Snehal is empowering and respectful. The gym is super clean, well-ventilated, and equipped with modern machinery you usually only find in Pune or Mumbai.',
+    rating: 5,
+  },
+  {
+    id: 'test-3',
+    name: 'Vaibhav Patil',
+    role: 'Member since 2021',
+    achievement: 'Bench 120 KG · Squat 160 KG',
+    quote:
+      'Best gym in Beed district without a doubt. The iron atmosphere, great sound system, and no-excuse attitude make you want to push harder. True value for money.',
+    rating: 5,
+  },
+];
+
+export const GYM_DETAILS = {
+  name: 'Fitness Matters Gym',
+  tagline: 'Ambejogai’s Premier Strength & Conditioning Club',
+  motto: 'Discipline Today. Dominate Tomorrow.',
+  address: {
+    line1: 'Near Yogeshwari Mahavidyalaya, Parli Road',
+    line2: 'Shivaji Chowk Area',
+    city: 'Ambejogai',
+    district: 'Beed',
+    state: 'Maharashtra',
+    pincode: '431517',
+    full: 'Near Yogeshwari Mahavidyalaya, Parli Road, Shivaji Chowk Area, Ambejogai, Maharashtra 431517',
+  },
+  contacts: {
+    phone: '+91 94237 88990',
+    phoneFormatted: '+91 94237 88990',
+    whatsapp: '919423788990',
+    email: 'info@fitnessmattersgym.com',
+  },
+  hours: {
+    weekdays: '5:30 AM – 10:00 PM',
+    sunday: '6:00 AM – 12:00 PM (Noon)',
+  },
+  metrics: {
+    members: '500+',
+    coaches: '10+',
+    floorSize: '5,000 Sq. Ft.',
+    transformations: '1,200+',
+  },
+};
